@@ -72,7 +72,32 @@ displayList()
 // and returns all items in the shoppingList that contain that search term (case-insensitive).
 function filterItems(searchterm) {
 
+    // Create an empty array to store filtered items
+    let searchList = []
+
+    // Convert search term to lowercase
+    searchterm = searchterm.toLowerCase()
+
+     // Loop through the shoppingList array
+    for (let s = 0; s < shoppingList.length; s++) {
+
+        // Check if the item contains the search term
+        if (shoppingList[s].toLowerCase().includes(searchterm)) {
+
+            // Add matching item to the filtered array
+           searchList.push(shoppingList[s]);
+        }
+    }
+
+    // Return the filtered items
+    return searchList;
     
 }
+
+//Invoke/call the function with different searchh term values
+console.log(filterItems("cook"));
+console.log(filterItems("FRUIT"));
+console.log(filterItems("choc"));
+console.log(filterItems("milk"));
 
 
