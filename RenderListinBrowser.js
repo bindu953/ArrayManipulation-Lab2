@@ -57,7 +57,7 @@ addTaskButton.addEventListener("click",function(){
 
         // Display alert if input is empty
         alert("Please enter an item before adding to the shopping list.");
-        
+
     }
     
 })
@@ -65,16 +65,11 @@ addTaskButton.addEventListener("click",function(){
 // Remove Task button click event
 removeTaskButton.addEventListener("click", function() {
 
-    // Remove the last item
-    shoppingList.pop();
-
-    // Update HTML list
-    displayList();
     // Remove the last item if shopping list length is greater than 0
     if (shoppingList.length > 0) {
 
         shoppingList.pop();
-        //  // Update HTML list
+        //Update HTML list
         displayList();
     } else {
 
