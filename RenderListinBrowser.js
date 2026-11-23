@@ -6,14 +6,79 @@
 // Write another function that removes the last item and updates the displayed list when 
 // a “Remove Last Item” button is clicked.
 
-const { createElement } = require("react")
+ // Get HTML elements
+let inputItem = document.getElementById("inputText");
+let shoppingListElement = document.getElementById("shoppingList");
+let addTaskButton = document.getElementById("addTask");
+let removeTaskButton = document.getElementById("removeTask");
 
-let inputItem = document.getElementById("#inputText")
+let shoppingList = []
 
-let shoppingList = document.getElementById("#shoppingList")
+// Function to display shopping list in HTML
+function displayList() {
 
-let addTaskbutton = document.getElementById("AddTask")
+    // Clear the existing HTML list
+    shoppingListElement.innerHTML = "";
 
-addTaskbutton.addEventListener("clcik",function(){
+    // Loop through the array
+    for (let s = 0; s < shoppingList.length; s++) {
+
+        // Create a new list item
+        let li = document.createElement("li");
+
+        // Set the list item text
+        li.textContent = shoppingList[s];
+
+        // Add the li element to the ul
+        shoppingListElement.appendChild(li);
+    }
+}
+
+// AddTask button click event
+addTaskButton.addEventListener("click",function(){
+
+    //alert("click event working")
+    let item = inputItem.value.trim();
+
+    if (item !== "") {
+
+        // Check if item already exists
+        if (!shoppingList.includes(item)) {
+            shoppingList.push(item);
+            displayList();
+        } else {
+
+            alert("Item already exists");
+
+        }
+
+        inputItem.value = "";
+    }else {
+
+        // Display alert if input is empty
+        alert("Please enter an item before adding to the shopping list.");
+        
+    }
     
 })
+
+// Remove Task button click event
+removeTaskButton.addEventListener("click", function() {
+
+    // Remove the last item
+    shoppingList.pop();
+
+    // Update HTML list
+    displayList();
+    // Remove the last item if shopping list length is greater than 0
+    if (shoppingList.length > 0) {
+
+        shoppingList.pop();
+        //  // Update HTML list
+        displayList();
+    } else {
+
+        alert("Shopping list is empty");
+
+    }
+});
