@@ -17,8 +17,8 @@ function addItem(item) {
     //add item to the shopppingList array
     shoppingList.push(item)
 
-    //print shoppingList array
-    console.log(shoppingList)
+    // Display success message
+    console.log(`Item Added: "${item}" has been added to the shopping list.`)
 
 }
 
@@ -26,11 +26,16 @@ function addItem(item) {
 // from the shoppingList array.
 function removeLastItem() {
 
-    //removes the last item from the shoppingList array.
-    shoppingList.pop()
+    if (shoppingList.length > 0) {
 
-    //print shoppingList array
-    console.log(shoppingList)
+        let removedItem = shoppingList.pop();
+
+        console.log(`Item Removed: "${removedItem}" has been removed from the shopping list.`);
+
+    } else {
+
+        console.log("Cannot remove item. The shopping list is empty.");
+    }
 
 }
 
@@ -38,12 +43,12 @@ function removeLastItem() {
 // array to the console.
 function displayList() {
 
-    console.log(`Printing items in the shoppingList array: `)
+    console.log("\n----- Current Shopping List -----")
 
     // print shoppingList array
     for (let s = 0; s < shoppingList.length; s++) {
 
-        console.log(`${shoppingList[s]}`)
+        console.log(`${s + 1}. ${shoppingList[s]}`);
     }
 
 }
