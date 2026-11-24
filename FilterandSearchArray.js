@@ -30,6 +30,7 @@ function addItem(item) {
     if (!exists) {
 
         shoppingList.push(item)
+        console.log(`"${item}" successfully added to the shopping list.`);
     }
 
 }
@@ -50,7 +51,7 @@ function removeLastItem() {
 // array to the console.
 function displayList() {
 
-    console.log(`Printing items in the shoppingList array: `)
+    console.log("\nCurrent Shopping List:");
 
     // print shoppingList array
     for (let s = 0; s < shoppingList.length; s++) {
@@ -78,26 +79,26 @@ function filterItems(searchterm) {
     // Convert search term to lowercase
     searchterm = searchterm.toLowerCase()
 
-     // Loop through the shoppingList array
+    // Loop through the shoppingList array
     for (let s = 0; s < shoppingList.length; s++) {
 
         // Check if the item contains the search term
         if (shoppingList[s].toLowerCase().includes(searchterm)) {
 
             // Add matching item to the filtered array
-           searchList.push(shoppingList[s]);
+            searchList.push(shoppingList[s]);
         }
     }
 
     // Return the filtered items
     return searchList;
-    
+
 }
 
-//Invoke/call the function with different searchh term values
-console.log(filterItems("cook"));
-console.log(filterItems("FRUIT"));
-console.log(filterItems("choc"));
-console.log(filterItems("milk"));
+// Invoke/call the function with different search term values
+console.log('Filtered items for "cook":', filterItems("cook"));
+console.log('Filtered items for "FRUIT":', filterItems("FRUIT"));
+console.log('Filtered items for "cHOC":', filterItems("cHOC"));
+console.log('Filtered items for "milk":', filterItems("milk"));
 
 
