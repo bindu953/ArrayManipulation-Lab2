@@ -3,9 +3,9 @@
 
 ## Project Overview
 
-This lab focuses on practicing JavaScript array methods and working with arrays to add, remove, and search for items.
+In this lab, I practiced JavaScript array methods and DOM manipulation by creating a simple shopping list application.
 
-I created a simple shopping list array manipulation, filtering, searching arrays and render list in browser.js files, where users can add items, remove the last item, and view the shopping list on a webpage. I also practiced searching for items in an array using a case-insensitive search.
+The lab is divided into three tasks. In the first two tasks, I worked with arrays to add, remove, display, and search for items. In the third task, I created a webpage where users can add and remove shopping list items dynamically.
 
 ## Technologies Used
 
@@ -35,66 +35,67 @@ Array-Manipulation-Lab2/
 
 In this task, I created an empty array called `shoppingList` and wrote functions to add, remove, and display items.
 
-- `addItem(item)` uses `push()` to add an item to the array.
-- `removeLastItem()` uses `pop()` to remove the last item.
-- `displayList()` uses a `for` loop to print each item in the console.
-
-I tested these functions by adding fruits, vegetables, cookies, and chocolates to the shopping list.
+- Used `push()` to add items to the shopping list array.
+- Used `pop()` to remove the last item from the array.
+- Created a `displayList()` function using a `for` loop to print each item in the console.
+- Tested the functions by adding fruits, vegetables, cookies, and chocolates.
 
 ### Task 2: Filter and Search an Array
 
-In this task, I modified the `addItem()` function to prevent duplicate items from being added to the shopping list.
+In this task, I modified the `addItem()` function to prevent duplicate items from being added to the array.
 
-I used a `for` loop and a Boolean variable called `exists` to check whether an item was already present in the array.
+I used a `for` loop and a Boolean variable called `exists` to check whether an item was already in the shopping list.
 
 I also created a `filterItems(searchterm)` function to search for matching items.
 
 - Used `toLowerCase()` to make the search case-insensitive.
 - Used `includes()` to check whether an item contains the search term.
-- Used `push()` to store matching items in a new array.
-- Returned the filtered array using `return`.
+- Used `push()` to add matching items to a new array called `searchList`.
+- Returned the matching items using `return`.
 
 For example, searching for `COOK` returns `cookies`, and searching for `FRUIT` returns `fruits`.
 
 ### Task 3: Render the List in the Browser
 
-In this task, I created an HTML page to display the shopping list dynamically.
+In this task, I created a simple shopping list webpage using HTML, CSS, and JavaScript.
 
-The webpage includes:
+The webpage allows users to:
 
-- An input field to enter an item.
-- An Add Task button.
-- A Remove Last Item button.
-- An unordered list to display shopping list items.
+- Enter an item using an input field.
+- Add items by clicking the Add Item button.
+- Display items dynamically in an unordered list.
+- Prevent empty items from being added.
+- Check for duplicate items before adding them.
+- Remove the last item using the Remove Last Item button.
 
-I used JavaScript DOM methods and event listeners to update the webpage when the user clicks a button.
+I used `getElementById()` to access HTML elements and `addEventListener()` to handle button clicks.
 
-I also added validation to prevent users from adding empty or duplicate items.
+When the user clicks the Add Item button, JavaScript gets the input value and checks whether it is empty or already exists in the list.
 
-## JavaScript Methods Used
+I used `querySelectorAll()` and a `for` loop to check for duplicate items.
 
-| Method | Purpose |
-|--------|---------|
-| `push()` | Adds an item to the array |
-| `pop()` | Removes the last item from the array |
-| `includes()` | Checks whether an item or search term exists |
-| `toLowerCase()` | Converts text to lowercase for searching |
-| `trim()` | Removes extra spaces from user input |
-| `createElement()` | Creates a new HTML element |
-| `appendChild()` | Adds an element to the webpage |
-| `addEventListener()` | Handles button click events |
+If the item is valid, I used `createElement()` to create a new `<li>` element and `appendChild()` to display it inside the shopping list.
+
+After adding an item, the input field is cleared using `value = ""`, and `focus()` places the cursor back in the input field.
+
+For removing items, I used `children.length` to check whether the list contains any items and `lastElementChild.remove()` to remove the last displayed item.
+
+In Task 3, I updated the HTML directly using DOM methods instead of storing the displayed items in a separate JavaScript array.
 
 ## How to Run the Project
 
-1. Download or clone the GitHub repository.
+1. Clone or download the GitHub repository.
 2. Open the project folder in Visual Studio Code.
 3. Open `index.html` using Live Server or a web browser.
 4. Enter an item in the input field.
-5. Click the Add Task button to add the item to the list.
-6. Click the Remove Last Item button to remove an item.
-7. Open the browser console to view any messages.
+5. Click the Add Item button to add it to the shopping list.
+6. Try entering the same item again to test duplicate checking.
+7. Click the Remove Last Item button to remove the last displayed item.
+8. Open the browser console to check for errors.
 
-To test Task 1 and Task 2 separately, run their JavaScript files using Node.js:
+### Testing Task 1 and Task 2
+
+To run Task 1 and Task 2 separately, use the VS Code terminal:
 
 ```bash
 node ArrayManipulation.js
@@ -103,35 +104,42 @@ node FilterandSearchArray.js
 
 ## Testing
 
-I tested the JavaScript functions with different shopping list items.
+I tested the application with different inputs and shopping list items.
 
 - Added multiple items to the shopping list.
-- Checked whether duplicate items were prevented.
-- Tested searching with uppercase and lowercase letters.
-- Tested removing the last item from the array.
-- Checked that items were displayed dynamically on the webpage.
-- Added an alert message when the input field was empty.
+- Checked that duplicate items were not added.
+- Tested adding an empty item.
+- Tested searching with uppercase and lowercase letters in Task 2.
+- Removed the last item from the shopping list.
+- Checked the alert message when the shopping list was empty.
+- Verified that items were displayed dynamically on the webpage.
+- Tested clearing the input field and focusing it after adding an item.
 
 ## Challenges and Learning
 
-One challenge was understanding how to prevent duplicate items in the array. I used a `for` loop and a Boolean variable to check whether an item already existed.
+One challenge was understanding how to check for duplicate items. I used a `for` loop and a Boolean variable to check whether an item already existed.
 
-Another challenge was implementing the search functionality. I learned how to use `toLowerCase()` and `includes()` to find matching items regardless of uppercase or lowercase letters.
+Another challenge was implementing case-insensitive searching. I learned how to use `toLowerCase()` with `includes()` to find matching items.
 
-I also practiced working with the DOM to display array items in HTML. I learned how to create list elements dynamically and update the webpage using event listeners.
+While working on Task 3, I practiced creating HTML elements dynamically using JavaScript. I also learned the difference between manipulating arrays and modifying HTML elements directly.
+
+I had to correct small mistakes in my code, such as using `value` instead of `Value` and checking `children.length` instead of `length` for HTML elements.
 
 ## Future Improvements
 
 If I had more time, I would like to:
 
-- Add a delete button beside each shopping list item.
-- Display messages directly on the webpage instead of using alerts.
-- Add search functionality to the browser interface.
-- Save shopping list items using localStorage.
-- Improve the CSS styling and make the page more responsive.
+- Add a search input to filter shopping list items directly on the webpage.
+- Add a Delete button next to each item.
+- Save shopping list items using `localStorage`.
+- Display messages on the webpage instead of using alerts.
+- Improve the CSS styling for mobile screens.
+- Connect the browser shopping list to a JavaScript array.
 
 ## Conclusion
 
-This lab helped me understand how to manipulate arrays using JavaScript. I practiced adding and removing items, preventing duplicates, searching arrays, and displaying data dynamically on a webpage.
+This lab helped me practice JavaScript array methods, functions, loops, conditionals, and DOM manipulation.
 
-I also gained more practice using functions, loops, conditionals, DOM methods, and event listeners.
+I learned how to add, remove, and search for items in arrays and how to create and remove HTML elements dynamically.
+
+It also helped me better understand how JavaScript interacts with HTML to make a webpage interactive.

@@ -6,71 +6,59 @@
 // Write another function that removes the last item and updates the displayed list when 
 // a “Remove Last Item” button is clicked.
 
- // Get HTML elements
-let inputItem = document.getElementById("inputText");
-let shoppingListElement = document.getElementById("shoppingList");
-let addTaskButton = document.getElementById("addTask");
-let removeTaskButton = document.getElementById("removeTask");
-
-let shoppingList = []
-
-// Function to display shopping list in HTML
-function displayList() {
-
-    // Clear the existing HTML list
-    shoppingListElement.innerHTML = "";
-
-    // Loop through the array
-    for (let s = 0; s < shoppingList.length; s++) {
-
-        // Create a new list item
-        let li = document.createElement("li");
-
-        // Set the list item text
-        li.textContent = shoppingList[s];
-
-        // Add the li element to the ul
-        shoppingListElement.appendChild(li);
-    }
-}
+// Get HTML elements
+let itemInput = document.getElementById("item-input");
+let shoppingList = document.getElementById("shopping-list");
+let addToListBtn = document.getElementById("add-btn");
+let removeToListBtn = document.getElementById("remove-btn");
 
 // AddTask button click event
-addTaskButton.addEventListener("click",function(){
+addToListBtn.addEventListener("click", function () {
 
     //alert("click event working")
-    let item = inputItem.value.trim();
+    let item = itemInput.value.trim();
 
     if (item !== "") {
 
         // Check if item already exists
-        if (!shoppingList.includes(item)) {
-            shoppingList.push(item);
-            displayList();
-        } else {
+        let existingItems = shoppingList.querySelectorAll("li");
+        let exists = false;
+        for (let s = 0; s < existingItems.length; s++) {
 
-            alert("Item already exists");
-
+            if (existingItems[s].textContent.toLowerCase() === item.toLowerCase()) {
+                exists = true;
+                break;
+            }
         }
+        // Check if duplicate item exists
+        if (exists) {
 
-        inputItem.value = "";
-    }else {
+            alert("Item already exists in the shopping list.");
+            itemInput.focus();
+            return;
+        }
+        const li = document.createElement("li")
+        li.innerText = item
+        shoppingList.appendChild(li)
+        itemInput.value = ""
+        itemInput.focus()
+    } else {
 
         // Display alert if input is empty
         alert("Please enter an item before adding to the shopping list.");
 
     }
-    
+
 })
 
 // Remove Task button click event
-removeTaskButton.addEventListener("click", function() {
+removeToListBtn.addEventListener("click", function () {
 
-    // Remove the last item if shopping list length is greater than 0
-    if (shoppingList.length > 0) {
+    //Remove the last item if shopping list length is greater than 0
+    if (shoppingList.children.length > 0) {
 
-        shoppingList.pop();
-        //Update HTML list
-        displayList();
+        shoppingList.lastElementChild.remove()
+
     } else {
 
         alert("Shopping list is empty");
